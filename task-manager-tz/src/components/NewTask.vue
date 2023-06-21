@@ -36,8 +36,15 @@
         props : {
             task : {
                 type : Object,
-            }
+    
+            }   
+            ,
+            is_refactored_task_exist: {
+                type: Boolean
+            },
+            
         },
+        emits : ['task_is_done','delete_curent_task','open_refactor_task'],
         methods : {
             task_is_done(){
                 this.$emit('task_is_done',this.task.new_task);

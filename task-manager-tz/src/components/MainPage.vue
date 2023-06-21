@@ -8,8 +8,10 @@
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String
-  }
+
+  },
+  emits: []
+  
 }
 </script>
 

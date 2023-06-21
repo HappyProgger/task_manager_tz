@@ -37,8 +37,9 @@ export  default{
             changed_task : "",
         }   
     },
+    emits : [ 'close', 'get_refactor_task'],
     props : {
-        is_refactored_task_exist :{
+        is_refactored_task_exist : {
             type : Boolean
         }
     },

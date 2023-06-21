@@ -6,7 +6,7 @@
        :style="{ 'display' : 'flex'}" 
        v-if=is_open_modal_window_for_ref_task
        @close=close_modal_window_refactor 
-       @get_refactor_task=change_task >
+       @get_refactor_task=change_task > 
       </modal-window-refactor> 
   <div class="container py-5 h-100">
     
@@ -28,7 +28,7 @@
               </div>
 
               <div class="col-12">
-                <button type="submit"  @click=add_new_task(name_of_new_task) class="btn btn-primary">Save</button>
+                <button type="submit"  :class="{ 'disabled' : is_task_exist}" @click=add_new_task(name_of_new_task) class="btn btn-primary">Save</button>
               </div>
 
               <div class="col-12">
@@ -181,12 +181,10 @@ export default{
         },
         func_is_task_exist(){
           console.log(this.tasks.filter(t => t.new_task === this.name_of_new_task))
-          if (this.tasks.filter(t => t.new_task === this.name_of_new_task).length != []){
-            console.log("fdasfdasdfasdf")
-            return true
+          return (this.tasks.filter(t => t.new_task === this.name_of_new_task).length != 0)
 
-          }
-          return false
+
+
         }
       },
 
@@ -207,6 +205,11 @@ export default{
     computed(){
       // this.func_is_task_exist
 
+    },
+    watch:{
+      name_of_new_task(){
+        this.is_task_exist = this.func_is_task_exist()
+      }
     }
 
 
