@@ -153,6 +153,7 @@ export default{
     
             this.is_open_modal_window_for_ref_task = true;
             this.refactoring_task = name_task
+            console.log(this.refactoring_task)
             
         },
         close_modal_window_refactor(){
@@ -160,18 +161,19 @@ export default{
          
         },
         change_task(new_task_for_change){
+          console.log(new_task_for_change)
+          console.log((this.tasks.filter(t => t.new_task === this.name_of_new_task)))
 
-
-          this.tasks.filter(t => t.new_task === this.refactoring_task)[0].new_task = new_task_for_change
-
-          if ((this.tasks.filter(t => t.new_task === this.name_of_new_task)).length === 0){
-                
+          
+          console.log((this.tasks.filter(t => t.new_task === new_task_for_change)).length != 0)
+          if ((this.tasks.filter(t => t.new_task === new_task_for_change)).length != 0){
+      
                 this.close_modal_window_refactor()
-                  return 
+                return 
               }
 
           localStorage.setItem('tasks', JSON.stringify(this.tasks))
-
+          this.tasks.filter(t => t.new_task === this.refactoring_task)[0].new_task = new_task_for_change
           this.is_open_modal_window_for_ref_task = false;
 
 

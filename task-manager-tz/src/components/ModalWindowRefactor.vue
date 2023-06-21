@@ -10,11 +10,14 @@
             </div>
            
                   <input type="text" v-model=this.changed_task placeholder="Введите текст новой задачи">
+                  <label class="form-label" v-if = is_refactored_task_exist :style="{ 'color' : 'red'}">Такая задача уже существует</label>
                   <button 
                   :class = "{ 'disabled' : !changed_task }"
                   class="btn btn-primary" type="button" 
                   text=""
                   @click="$emit('get_refactor_task',this.changed_task)" >Refactor</button>
+
+  
                 
 
 
@@ -35,7 +38,9 @@ export  default{
         }   
     },
     props : {
-       
+        is_refactored_task_exist :{
+            type : Boolean
+        }
     },
     methods : {
         change_task(){
